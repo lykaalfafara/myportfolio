@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Engr. Ma. Lyka B. Alfafara — Licensed Electrical Engineer building structured systems for engineering and construction operations.">
+<title>Engr. Ma. Lyka Alfafara — Engineer, Systems Builder</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#14171c;
+  --ink-soft:#4b5563;
+  --ink-faint:#8a8f98;
+  --paper:#fafaf8;
+  --paper-alt:#f1f0ea;
+  --card:#ffffff;
+  --line:#e3e1d9;
+  --accent:#2452e8;
+  --accent-ink:#17307e;
+  --circuit:#9db8f5;
+  --signal-amber:#a66a15;
+  --signal-amber-bg:#faf1e1;
+  --signal-green:#2f7a58;
+  --signal-green-bg:#e9f3ee;
+  --radius:14px;
+  --maxw:1160px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:'Space Grotesk',sans-serif;
+  color:var(--ink);
+  margin:0 0 .5em;
+  letter-spacing:-0.01em;
+}
+p{margin:0 0 1em;color:var(--ink-soft);}
+a{color:inherit;text-decoration:none;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+.tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent-ink);
+  background:#eef2fd;border:1px solid #d7e0fa;
+  padding:5px 12px;border-radius:100px;
+}
+.status{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 10px;border-radius:6px;
+}
+.status.shipped{color:var(--signal-green);background:var(--signal-green-bg);}
+.status.progress{color:var(--signal-amber);background:var(--signal-amber-bg);}
+.status.learning{color:var(--accent-ink);background:#eef2fd;}
+.status::before{content:"●";font-size:.6rem;}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(250,250,248,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav .container{display:flex;align-items:center;justify-content:space-between;height:66px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;}
+.brand-mark{
+  width:32px;height:32px;border-radius:8px;background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;font-family:'IBM Plex Mono',monospace;
+}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font-size:.88rem;color:var(--ink-soft);transition:color .15s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-links a.cta{
+  color:#fff;background:var(--ink);padding:8px 16px;border-radius:8px;font-size:.85rem;
+}
+.nav-links a.cta:hover{background:var(--accent-ink);}
+.nav-toggle{display:none;background:none;border:none;font-size:1.3rem;color:var(--ink);cursor:pointer;}
+@media(max-width:880px){
+  .nav-links{position:fixed;top:66px;left:0;right:0;background:var(--paper);flex-direction:column;
+    align-items:flex-start;padding:20px 28px 26px;border-bottom:1px solid var(--line);gap:16px;
+    transform:translateY(-8px);opacity:0;pointer-events:none;transition:.2s;}
+  .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+  .nav-toggle{display:block;}
+}
+
+/* HERO */
+.hero{padding:150px 0 90px;}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+.hero h1{font-size:clamp(2.1rem,4.4vw,3.35rem);line-height:1.08;font-weight:700;margin-bottom:.45em;}
+.hero-lead{font-size:1.12rem;color:var(--ink);max-width:52ch;}
+.hero-sub{font-size:.98rem;max-width:54ch;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 34px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:9px;
+  font-size:.92rem;font-weight:500;border:1px solid transparent;transition:.15s;cursor:pointer;
+}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:var(--accent-ink);}
+.btn-line{border-color:var(--line);color:var(--ink);background:#fff;}
+.btn-line:hover{border-color:var(--ink);}
+.stat-row{display:grid;grid-template-columns:repeat(3,auto);gap:36px;padding-top:22px;border-top:1px solid var(--line);}
+.stat-row strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.5rem;color:var(--ink);}
+.stat-row span{font-size:.8rem;color:var(--ink-faint);}
+
+/* SIGNATURE DIAGRAM */
+.diagram-frame{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;box-shadow:0 20px 50px -30px rgba(20,23,28,.25);
+}
+.diagram-frame svg{width:100%;height:auto;display:block;}
+.diagram-cap{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:.76rem;color:var(--ink-faint);}
+@keyframes flow{
+  0%{stroke-dashoffset:120;}
+  100%{stroke-dashoffset:0;}
+}
+.wire{stroke-dasharray:6 6;animation:flow 3.2s linear infinite;}
+.pulse{animation:pulseDot 2.6s ease-in-out infinite;}
+@keyframes pulseDot{
+  0%,100%{opacity:.35;}
+  50%{opacity:1;}
+}
+@media(prefers-reduced-motion:reduce){
+  .wire,.pulse{animation:none;}
+}
+
+/* SECTIONS */
+.section{padding:90px 0;}
+.section.tint{background:var(--paper-alt);}
+.section-head{max-width:640px;margin-bottom:48px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:14px;display:block;}
+.section-head h2{font-size:clamp(1.6rem,2.6vw,2.15rem);font-weight:600;}
+
+/* HOW I WORK */
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.how-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;}
+.how-card .mono{color:var(--accent-ink);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;}
+.how-card h3{font-size:1.05rem;margin:10px 0 8px;}
+.how-card p{font-size:.9rem;margin:0;}
+@media(max-width:980px){.how-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.how-grid{grid-template-columns:1fr;}}
+
+/* PROJECTS */
+.flagship{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:40px;margin-bottom:26px;
+}
+.flagship-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:8px;}
+.flagship h3{font-size:1.6rem;margin-bottom:.3em;}
+.flagship .lead{font-size:1.02rem;color:var(--ink);max-width:60ch;}
+.status-row{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 24px;}
+.story-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:26px;border-top:1px solid var(--line);margin-top:8px;}
+.story-grid h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;font-family:'IBM Plex Mono',monospace;color:var(--accent-ink);margin-bottom:8px;}
+.story-grid p{font-size:.92rem;margin:0;}
+@media(max-width:900px){.story-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.story-grid{grid-template-columns:1fr;}}
+
+.flow-strip{
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px;background:var(--paper-alt);
+  border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-top:26px;font-family:'IBM Plex Mono',monospace;
+  font-size:.8rem;color:var(--ink-soft);
+}
+.flow-strip i{color:var(--ink-faint);font-size:.75rem;}
+
+.case-blocks{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px;}
+.case-blocks h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;font-family:'IBM Plex Mono',monospace;color:var(--accent-ink);margin-bottom:10px;}
+.pill-wrap{display:flex;flex-wrap:wrap;gap:8px;}
+.pill-wrap span{
+  font-size:.78rem;background:var(--paper-alt);border:1px solid var(--line);border-radius:100px;padding:5px 12px;color:var(--ink-soft);
+}
+@media(max-width:900px){.case-blocks{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.case-blocks{grid-template-columns:1fr;}}
+
+.shot-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0;}
+.shot{
+  aspect-ratio:16/10;border-radius:10px;background:var(--paper-alt);border:1px dashed var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  color:var(--ink-faint);text-align:center;padding:10px;overflow:hidden;position:relative;
+}
+.shot i{font-size:1.3rem;}
+.shot b{font-size:.72rem;color:var(--ink-soft);font-weight:500;}
+.shot small{font-size:.62rem;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;}
+.shot.wide{grid-column:span 2;}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--paper-alt);}
+.shot-wrap.wide{grid-column:span 2;}
+.shot-caption{font-size:.8rem;color:var(--ink-soft);margin:8px 2px 0;text-align:center;}
+.shot-caption strong{color:var(--ink);font-weight:500;}
+.shot-link{position:absolute;inset:0;display:block;z-index:2;}
+.compression-note{font-size:.8rem;color:var(--ink-faint);margin-top:-10px;margin-bottom:26px;}
+.compression-note i{margin-right:5px;}
+
+/* CAROUSEL */
+.carousel{
+  aspect-ratio:16/10;border-radius:10px;background:var(--paper-alt);border:1px dashed var(--line);
+  position:relative;overflow:hidden;
+}
+.carousel-track{display:flex;height:100%;transition:transform .35s ease;}
+.carousel-slide{flex:0 0 100%;height:100%;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--ink-faint);text-align:center;padding:10px;}
+.carousel-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--paper-alt);}
+.carousel-slide i{font-size:1.3rem;}
+.carousel-slide b{font-size:.72rem;color:var(--ink-soft);font-weight:500;}
+.carousel-slide small{font-size:.62rem;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;}
+.carousel-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:32px;height:32px;border-radius:50%;background:rgba(20,23,28,.75);color:#fff;border:none;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;transition:background .15s;
+}
+.carousel-arrow:hover{background:var(--accent);}
+.carousel-arrow.prev{left:10px;}
+.carousel-arrow.next{right:10px;}
+.carousel-dots{position:absolute;bottom:10px;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:6px;}
+.carousel-dots button{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);border:none;padding:0;cursor:pointer;}
+.carousel-dots button.active{background:#fff;width:16px;border-radius:100px;transition:width .2s;}
+.carousel-page-tag{
+  position:absolute;top:10px;right:10px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:.66rem;
+  color:#fff;background:rgba(20,23,28,.6);padding:2px 8px;border-radius:100px;
+}
+
+@media(max-width:760px){.shot-strip{grid-template-columns:repeat(2,1fr);}.shot.wide{grid-column:span 2;}}
+
+.mini-shot{
+  aspect-ratio:16/10;border-radius:10px;background:var(--paper-alt);border:1px dashed var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  color:var(--ink-faint);text-align:center;margin-bottom:16px;position:relative;overflow:hidden;
+}
+.mini-shot i{font-size:1.2rem;}
+.mini-shot small{font-size:.62rem;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;}
+.mini-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--paper-alt);}
+
+.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.mini-case{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;height:100%;}
+.mini-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.mini-top i{color:var(--accent);font-size:1.1rem;}
+.mini-case h3{font-size:1.12rem;margin-bottom:8px;}
+.mini-case p{font-size:.9rem;flex:1;}
+.mini-case .pill-wrap{margin-top:14px;}
+@media(max-width:980px){.mini-grid{grid-template-columns:1fr;}}
+
+/* KPI mini bars for Carry Forward project */
+.kpi-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0 14px;}
+.kpi{background:var(--paper-alt);border:1px solid var(--line);border-radius:8px;padding:10px 12px;}
+.kpi span{display:block;font-size:.7rem;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;}
+.kpi strong{font-family:'Space Grotesk',sans-serif;font-size:1rem;}
+
+/* TIMELINE */
+.timeline{border-left:2px solid var(--line);padding-left:32px;display:flex;flex-direction:column;gap:34px;}
+.tl-item{position:relative;}
+.tl-item::before{
+  content:"";position:absolute;left:-38px;top:4px;width:11px;height:11px;border-radius:50%;
+  background:var(--accent);border:3px solid var(--paper);box-shadow:0 0 0 1px var(--line);
+}
+.tl-item small{font-family:'IBM Plex Mono',monospace;font-size:.76rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em;}
+.tl-item h3{font-size:1.1rem;margin:4px 0 8px;}
+.tl-item p{font-size:.92rem;max-width:64ch;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.skill-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;}
+.skill-card h3{font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.skill-card h3 i{color:var(--accent);}
+@media(max-width:900px){.skills-grid{grid-template-columns:1fr;}}
+
+.tool-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;}
+.tool-chip{
+  display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
+  border-radius:9px;padding:9px 14px;font-size:.85rem;color:var(--ink-soft);
+}
+.tool-chip i{color:var(--ink-faint);width:16px;text-align:center;}
+.tool-chip.learning{border-style:dashed;color:var(--accent-ink);}
+
+/* CERTS */
+.cert-strip{display:flex;gap:18px;flex-wrap:wrap;}
+.cert-badge{
+  display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:18px 22px;flex:1;min-width:260px;
+}
+.cert-badge i{font-size:1.3rem;color:var(--accent);}
+.cert-badge b{display:block;font-size:.96rem;}
+.cert-badge span{font-size:.8rem;color:var(--ink-faint);}
+
+/* ACADEMIC PROJECTS (reuses .flagship card language at smaller scale) */
+.flagship,.academic-card{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:40px;margin-bottom:26px;
+}
+.academic-card{padding:32px;}
+.academic-card .flagship-top{margin-bottom:8px;}
+.academic-card h3{font-size:1.28rem;margin-bottom:.3em;}
+.academic-note{
+  background:var(--paper-alt);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 26px;font-size:.94rem;color:var(--ink-soft);margin-top:8px;
+}
+
+/* SUBSECTION LABELS (used inside Licenses & Professional Development) */
+.subhead{
+  font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent-ink);margin:0 0 18px;display:block;
+}
+.license-block{margin-bottom:52px;}
+.license-block:last-child{margin-bottom:0;}
+
+/* LEARNING JOURNEY */
+.learn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.learn-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;}
+.learn-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.learn-top i{color:var(--accent);font-size:1.05rem;}
+.learn-card h4{font-size:.95rem;margin:0 0 10px;font-family:'Space Grotesk',sans-serif;}
+.learn-bar{height:6px;border-radius:100px;background:var(--paper-alt);overflow:hidden;margin-top:10px;}
+.learn-bar span{display:block;height:100%;border-radius:100px;background:var(--accent);}
+.learn-bar.level-1 span{width:35%;background:var(--accent-ink);}
+.learn-bar.level-2 span{width:65%;background:var(--signal-amber);}
+.learn-bar.level-3 span{width:90%;background:var(--signal-green);}
+@media(max-width:980px){.learn-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.learn-grid{grid-template-columns:1fr;}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start;}
+.about-photo{
+  aspect-ratio:4/5;border-radius:var(--radius);background:var(--paper-alt);border:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--ink-faint);
+  position:relative;overflow:hidden;
+}
+.about-photo i{font-size:2.4rem;}
+.about-photo span{font-size:.78rem;}
+.about-photo img.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--paper-alt);}
+
+.about-media{display:flex;flex-direction:column;gap:16px;}
+.intro-video{
+  aspect-ratio:16/10;border-radius:var(--radius);background:var(--paper-alt);border:1px solid var(--line);
+  position:relative;overflow:hidden;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--ink-faint);
+}
+.intro-video img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--paper-alt);}
+.intro-video .play-btn{
+  position:relative;z-index:2;width:52px;height:52px;border-radius:50%;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;
+  transition:transform .15s,background .15s;
+}
+.intro-video:hover .play-btn{transform:scale(1.08);background:var(--accent);}
+.intro-video .play-cap{position:relative;z-index:2;font-size:.72rem;color:#fff;background:rgba(20,23,28,.6);padding:4px 10px;border-radius:100px;}
+.intro-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;background:#000;}
+.intro-video.playing video{display:block;}
+.intro-video.playing .play-btn,.intro-video.playing .play-cap,.intro-video.playing img.poster,
+.intro-video.playing i.fa-video,.intro-video.playing span.cap{display:none;}
+.intro-video.playing{cursor:default;}
+.intro-video-label{font-size:.78rem;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;}
+
+.about-text p{font-size:1rem;color:var(--ink-soft);}
+.about-text .lede{font-size:1.15rem;color:var(--ink);font-family:'Space Grotesk',sans-serif;font-weight:500;line-height:1.4;}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;}.about-media{max-width:280px;}}
+
+/* CONTACT */
+.contact-panel{
+  background:var(--ink);color:#fff;border-radius:20px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;
+}
+.contact-panel h2{color:#fff;}
+.contact-panel p{color:#c7cad1;}
+.contact-list a,.contact-list span{display:flex;align-items:center;gap:10px;font-size:.95rem;color:#e7e9ee;margin-bottom:14px;}
+.contact-list i{color:var(--circuit);width:18px;}
+.contact-panel form{display:flex;flex-direction:column;gap:12px;}
+.contact-panel input,.contact-panel textarea{
+  background:#20242b;border:1px solid #33373f;border-radius:8px;padding:12px 14px;color:#fff;font-family:inherit;font-size:.92rem;
+}
+.contact-panel input::placeholder,.contact-panel textarea::placeholder{color:#7d818a;}
+.contact-panel label{font-size:.78rem;color:#9fa3ab;margin-bottom:2px;}
+.contact-panel .btn-primary{background:var(--accent);align-self:flex-start;margin-top:6px;}
+.contact-panel .btn-primary:hover{background:#1b3fc4;}
+#formStatus{font-size:.82rem;color:#9fe3bb;min-height:1em;}
+@media(max-width:900px){.contact-panel{grid-template-columns:1fr;padding:36px;}}
+
+/* FOOTER */
+.footer{padding:44px 0;border-top:1px solid var(--line);}
+.footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer p{margin:0;font-size:.85rem;color:var(--ink-faint);}
+.footer-socials{display:flex;gap:16px;}
+.footer-socials a{color:var(--ink-faint);font-size:1.05rem;}
+.footer-socials a:hover{color:var(--ink);}
+
+::selection{background:#d7e0fa;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <a class="brand" href="#home"><span class="brand-mark">MLA</span> Engr. Ma. Lyka Alfafara</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    <div class="nav-links" id="navLinks">
+      <a href="#work">Work</a>
+      <a href="#how">How I Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#academic">Academic</a>
+      <a href="#about">About</a>
+      <a class="cta" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag"><i class="fa-solid fa-bolt"></i> Licensed Electrical Engineer, Philippines</span>
+      <h1>I turn scattered project data into systems people can actually run on.</h1>
+      <p class="hero-lead">I'm an electrical engineer working in international operations today, and building toward engineering operations and construction technology — the roles where reading a drawing and structuring a spreadsheet both matter.</p>
+      <p class="hero-sub">My background isn't ten years on a jobsite. It's engineering training, three-plus years keeping international operations organized, and a habit of building the register, tracker, or dashboard that a team needed but didn't have yet.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary"><i class="fa-solid fa-diagram-project"></i> See what I've built</a>
+        <a href="#" class="btn btn-line" download><i class="fa-solid fa-file-arrow-down"></i> Download resume</a>
+      </div>
+      <div class="stat-row">
+        <div><strong>14</strong><span>Registers &amp; trackers in CPIS</span></div>
+        <div><strong>3+ yrs</strong><span>International operations</span></div>
+        <div><strong>1</strong><span>Engineering license, PRC</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="diagram-frame">
+        <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing scattered files being organized into a structured system that feeds a dashboard">
+          <!-- scattered inputs -->
+          <g font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-soft)">
+            <g transform="translate(20,26) rotate(-6)">
+              <rect x="0" y="0" width="78" height="34" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="10" y="21">Excel files</text>
+            </g>
+            <g transform="translate(14,78) rotate(4)">
+              <rect x="0" y="0" width="78" height="34" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="10" y="21">Emails</text>
+            </g>
+            <g transform="translate(22,132) rotate(-3)">
+              <rect x="0" y="0" width="78" height="34" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="10" y="21">PDFs</text>
+            </g>
+            <g transform="translate(12,186) rotate(5)">
+              <rect x="0" y="0" width="78" height="34" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="10" y="21">Site notes</text>
+            </g>
+          </g>
+          <!-- wires into structured node -->
+          <path class="wire" d="M98,43 C150,43 150,110 210,110" stroke="var(--circuit)" stroke-width="1.6" fill="none"/>
+          <path class="wire" d="M92,95 C150,95 150,110 210,110" stroke="var(--circuit)" stroke-width="1.6" fill="none"/>
+          <path class="wire" d="M100,149 C150,149 150,130 210,130" stroke="var(--circuit)" stroke-width="1.6" fill="none"/>
+          <path class="wire" d="M90,203 C150,203 150,130 210,130" stroke="var(--circuit)" stroke-width="1.6" fill="none"/>
+
+          <!-- structured system node -->
+          <rect x="210" y="90" width="120" height="70" rx="10" fill="var(--ink)"/>
+          <text x="270" y="118" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff">STRUCTURED</text>
+          <text x="270" y="132" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff">SYSTEM</text>
+          <circle class="pulse" cx="270" cy="146" r="3" fill="var(--circuit)"/>
+
+          <!-- wire to dashboard -->
+          <path class="wire" d="M330,125 C370,125 370,125 400,125" stroke="var(--circuit)" stroke-width="1.6" fill="none"/>
+          <rect x="400" y="95" width="46" height="60" rx="8" fill="#fff" stroke="var(--line)"/>
+          <rect x="408" y="108" width="10" height="34" fill="var(--accent)" opacity=".85"/>
+          <rect x="422" y="118" width="10" height="24" fill="var(--circuit)"/>
+          <rect x="436" y="102" width="6" height="40" fill="var(--ink-faint)"/>
+
+          <!-- labels bottom -->
+          <text x="230" y="200" font-family="IBM Plex Mono, monospace" font-size="9" fill="var(--ink-faint)">scattered → organized → decisions</text>
+        </svg>
+        <div class="diagram-cap">
+          <span class="mono">INPUT: unstructured</span>
+          <span class="mono">OUTPUT: decision-ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HOW I WORK -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">How I Work</span>
+      <h2>Engineering, operations, and technology, combined on purpose.</h2>
+      <p>Each part of my background does a specific job. None of it is decoration.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <span class="mono">Engineering</span>
+        <h3>Analytical thinking</h3>
+        <p>My electrical engineering training is where I learned to break a problem into its parts before touching a solution.</p>
+      </div>
+      <div class="how-card">
+        <span class="mono">Operations</span>
+        <h3>Discipline &amp; documentation</h3>
+        <p>Years in international operations taught me how a process actually holds up: clear records, checked quality, and clean handoffs.</p>
+      </div>
+      <div class="how-card">
+        <span class="mono">Technology</span>
+        <h3>Automating the repeatable</h3>
+        <p>When I see the same manual task twice, I build the tool that removes it — in Excel, Power BI, or VBA.</p>
+      </div>
+      <div class="how-card">
+        <span class="mono">In transition</span>
+        <h3>Deliberately, not by accident</h3>
+        <p>I'm currently building the construction-specific side of this on my own time — drawings, takeoffs, and site-side tools — and I say so plainly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section tint" id="work">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Featured Work</span>
+      <h2>Four projects, four honest stories.</h2>
+      <p>One is my flagship system. Two are real improvements from my current job. One is a project I'm openly still learning from.</p>
+    </div>
+    <p class="compression-note"><i class="fa-solid fa-up-right-from-square"></i>Screenshots are compressed to fit the layout — click any image to open the full-resolution version in a new tab.</p>
+
+    <!-- FLAGSHIP: CPIS -->
+    <article class="flagship">
+      <div class="flagship-top">
+        <div>
+          <span class="tag"><i class="fa-solid fa-layer-group"></i> Self-directed portfolio project</span>
+          <h3>CPIS — Construction Project Information System</h3>
+          <p class="lead">A Construction Project Information System I designed and built in Excel, with a Power BI layer on top, to prove to myself — and now to you — that I could structure a construction project's information, not just enter it.</p>
+        </div>
+      </div>
+      <div class="status-row">
+        <span class="status shipped">Excel system — complete</span>
+        <span class="status progress">Power BI layer — complete</span>
+      </div>
+      <div class="story-grid">
+        <div>
+          <h4>Problem</h4>
+          <p>Construction teams often run on disconnected spreadsheets: one file for documents, another for procurement, another for budget, none of them talking to each other.</p>
+        </div>
+        <div>
+          <h4>Approach</h4>
+          <p>I designed a single Excel workbook where every register — documents, drawings, RFIs, procurement, budget, progress — shares the same structure and can be joined together.</p>
+        </div>
+        <div>
+          <h4>Solution</h4>
+          <p>Seventeen linked registers feed a star-schema data model through Power Query, which a Power BI dashboard reads for reporting.</p>
+        </div>
+        <div>
+          <h4>Impact</h4>
+          <p>It's a working demonstration, not a deployed tool on a live jobsite yet — but it's the clearest proof I have that I can design a system, not just operate one.</p>
+        </div>
+      </div>
+      <div class="flow-strip">
+        <span>Project data</span><i class="fa-solid fa-arrow-right"></i>
+        <span>Excel registers</span><i class="fa-solid fa-arrow-right"></i>
+        <span>Power Query</span><i class="fa-solid fa-arrow-right"></i>
+        <span>Star schema</span><i class="fa-solid fa-arrow-right"></i>
+        <span>Power BI dashboard</span>
+      </div>
+
+      <div class="shot-strip">
+        <div class="shot-wrap wide">
+          <div class="shot"><a href="assets/images/cpis-drawing-register.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/cpis-drawing-register.png" alt="CPIS Excel home dashboard screenshot" onerror="this.style.display='none'"></a><i class="fa-solid fa-house-laptop"></i><b>Home dashboard</b><small>Screenshot</small></div>
+          <p class="shot-caption"><strong>Drawing Register</strong> — Screenshot</p>
+        </div>
+        <div class="shot-wrap">
+          <div class="shot"><a href="assets/images/cpis-document-register.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/cpis-document-register.png" alt="CPIS document register screenshot" onerror="this.style.display='none'"></a><i class="fa-solid fa-folder-tree"></i><b>Document register</b><small>Screenshot</small></div>
+          <p class="shot-caption"><strong>Document register</strong> — Screenshot</p>
+        </div>
+        <div class="shot-wrap">
+          <div class="shot"><a href="assets/images/cpis-rfi-register.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/cpis-rfi-register.png" alt="CPIS procurement tracker screenshot" onerror="this.style.display='none'"></a><i class="fa-solid fa-cart-flatbed"></i><b>Procurement tracker</b><small>Screenshot</small></div>
+          <p class="shot-caption"><strong>RFI Register</strong> — Screenshot</p>
+        </div>
+        <div class="shot-wrap wide">
+          <div class="shot"><a href="assets/images/cpis-power-bi.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/cpis-power-bi.png" alt="CPIS Power BI dashboard screenshot" onerror="this.style.display='none'"></a><i class="fa-solid fa-chart-pie"></i><b>Power BI dashboard</b><small>Screenshot</small></div>
+          <p class="shot-caption"><strong>Power BI dashboard</strong> — Screenshot</p>
+        </div>
+        <div class="shot-wrap">
+          <div class="shot"><a href="assets/images/cpis-star-schema.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/cpis-star-schema.png" alt="CPIS star schema data model screenshot" onerror="this.style.display='none'"></a><i class="fa-solid fa-diagram-project"></i><b>Star schema model</b><small>Screenshot</small></div>
+          <p class="shot-caption"><strong>Star schema model</strong> — Screenshot</p>
+        </div>
+      </div>
+
+      <div class="case-blocks">
+        <div>
+          <h4>Technology</h4>
+          <div class="pill-wrap"><span>Excel</span><span>Power Query</span><span>Power BI</span><span>DAX</span><span>Star schema</span></div>
+        </div>
+        <div>
+          <h4>Skills demonstrated</h4>
+          <div class="pill-wrap"><span>Data modeling</span><span>Document control logic</span><span>Procurement structure</span><span>Reporting design</span></div>
+        </div>
+        <div>
+          <h4>Lessons learned</h4>
+          <p>Designing the schema before building any register saved me from rebuilding half the workbook twice — structure has to come first, even when it's tempting to just start typing.</p>
+        </div>
+      </div>
+    </article>
+
+    <div class="mini-grid">
+      <article class="mini-case">
+        <div class="mini-top"><i class="fa-solid fa-chart-line"></i><span class="status progress">Live at work</span></div>
+        <div class="mini-shot"><a href="assets/images/operations-dashboard.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/operations-dashboard.png" alt=" Operations dashboard screenshot" onerror="this.style.display='none'"></a><i class="fa-solid fa-chart-pie"></i><small>Screenshot</small></div>
+        <h3>Operations Dashboard</h3>
+        <p>Built a Power BI dashboard at Cambridge University Press &amp; Assessment to monitor Candidate processing — trends over time, team workload, manual vs. automated volume, and average handling time.</p>
+        <div class="kpi-strip">
+          <div class="kpi"><span>Tracks</span><strong>Handling time</strong></div>
+          <div class="kpi"><span>Tracks</span><strong>Manual vs. auto</strong></div>
+        </div>
+        <div class="pill-wrap"><span>Power BI</span><span>DAX</span><span>Power Query</span><span>Process improvement</span></div>
+      </article>
+
+      <article class="mini-case">
+        <div class="mini-top"><i class="fa-solid fa-paper-plane"></i><span class="status shipped">Live at work</span></div>
+        <div class="mini-shot"><a href="assets/images/vba-automation-demo.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/vba-automation-demo.png" alt="Excel VBA email automation screenshot" onerror="this.style.display='none'"></a><i class="fa-solid fa-file-code"></i><small>Screenshot / GIF</small></div>
+        <h3>Excel VBA Email Automation</h3>
+        <p>Wrote a VBA tool that generates personalized Outlook emails straight from spreadsheet data, replacing a repetitive manual emailing task with a few clicks.</p>
+        <p style="font-size:.85rem;">The point wasn't the code — it was giving back hours that used to go to copy-pasting.</p>
+        <div class="pill-wrap"><span>Excel VBA</span><span>Outlook automation</span><span>Operational efficiency</span></div>
+      </article>
+
+      <article class="mini-case">
+        <div class="mini-top"><i class="fa-solid fa-pen-ruler"></i><span class="status learning">Actively learning</span></div>
+        <div class="mini-shot"><a href="assets/images/bluebeam-markup.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/bluebeam-markup.png" alt="Bluebeam Revu drawing markup screenshot" onerror="this.style.display='none'"></a><i class="fa-solid fa-pen-ruler"></i><small>Screenshot</small></div>
+        <h3>Bluebeam Revu Practice</h3>
+        <p>I'm not claiming professional Bluebeam experience. What I have done: reviewed residential electrical drawings, applied markups, counted devices, exported markup summaries, and practiced quantity takeoffs.</p>
+        <p style="font-size:.85rem;">It's practice, on purpose — one of the tools I'm deliberately learning for construction-tech roles.</p>
+        <div class="pill-wrap"><span>Bluebeam Revu</span><span>Drawing review</span><span>Takeoff practice</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Experience</span>
+      <h2>Operations experience, engineering underneath it.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <small>Current — International Operations / Exam Processing Administrator</small>
+        <h3>Cambridge University Press &amp; Assessment</h3>
+        <p>Support international exam processing operations through documentation, Excel automation, Power BI reporting, SharePoint administration, quality assurance, and stakeholder communication across regions.</p>
+        <div class="pill-wrap"><span>International operations</span><span>Excel automation</span><span>Power BI</span><span>SharePoint</span><span>Quality assurance</span></div>
+      </div>
+      <div class="tl-item">
+        <small>Customer Support Specialist</small>
+        <h3>TELUS International Philippines</h3>
+        <p>Handled customer cases, compliance requirements, and payment resolution — where I built the communication and problem-solving habits I still use today.</p>
+        <div class="pill-wrap"><span>Case management</span><span>Compliance</span><span>CRM systems</span></div>
+      </div>
+      <div class="tl-item">
+        <small>Administrative Assistant / Data Encoder</small>
+        <h3>Local Water District</h3>
+        <p>Maintained billing records, financial reports, and master data — early practice in the accuracy and structure that later became CPIS.</p>
+        <div class="pill-wrap"><span>Billing records</span><span>Financial reporting</span><span>Master data</span></div>
+      </div>
+      <div class="tl-item">
+        <small>2023 — Internship</small>
+        <h3>Electrical Engineering Internship</h3>
+        <p>Assisted electrical engineers with day-to-day project activities, coordinating directly with suppliers to request quotations (RFQs) and comparing them for materials and equipment. Organized procurement-related information, reviewed engineering documents and drawings when needed, and supported documentation and coordination between the engineering team, suppliers, and contractors.</p>
+        <p style="font-size:.9rem;">This is where I first saw how an engineering project actually runs day to day — not just the technical drawings, but the quotations, comparisons, and records behind every material decision. It's part of why procurement and cost-comparison work now feels like a natural extension of engineering, not a separate skill.</p>
+        <div class="pill-wrap"><span>Procurement engineering</span><span>Supplier coordination</span><span>Technical documentation</span><span>Cost &amp; material comparison</span><span>Construction workflows</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section tint" id="skills">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Skills</span>
+      <h2>What I bring, organized the way I'd organize anything else.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3><i class="fa-solid fa-bolt"></i> Engineering</h3>
+        <div class="pill-wrap">
+          <span>Licensed Electrical Engineer</span>
+          <span>Reading drawings &amp; specs</span>
+          <span>AutoCAD</span>
+          <span>Bluebeam Revu (learning)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><i class="fa-solid fa-diagram-project"></i> Systems &amp; Data</h3>
+        <div class="pill-wrap">
+          <span>Advanced Excel</span>
+          <span>Excel VBA</span>
+          <span>Power Query</span>
+          <span>Power BI &amp; DAX</span>
+          <span>Data modeling</span>
+          <span>SharePoint</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><i class="fa-solid fa-people-group"></i> Operations</h3>
+        <div class="pill-wrap">
+          <span>Documentation</span>
+          <span>Quality assurance</span>
+          <span>Process improvement</span>
+          <span>Stakeholder communication</span>
+          <span>International coordination</span>
+        </div>
+      </div>
+    </div>
+    <div class="tool-strip">
+      <span class="tool-chip"><i class="fa-solid fa-file-excel"></i>Excel</span>
+      <span class="tool-chip"><i class="fa-solid fa-chart-pie"></i>Power BI</span>
+      <span class="tool-chip"><i class="fa-solid fa-arrows-turn-to-dots"></i>Power Query</span>
+      <span class="tool-chip"><i class="fa-solid fa-file-word"></i>Word</span>
+      <span class="tool-chip"><i class="fa-solid fa-file-powerpoint"></i>PowerPoint</span>
+      <span class="tool-chip"><i class="fa-solid fa-envelope"></i>Outlook</span>
+      <span class="tool-chip"><i class="fa-brands fa-microsoft"></i>SharePoint</span>
+      <span class="tool-chip"><i class="fa-solid fa-drafting-compass"></i>AutoCAD</span>
+      <span class="tool-chip learning"><i class="fa-solid fa-pen-ruler"></i>Bluebeam Revu — learning</span>
+      <span class="tool-chip"><i class="fa-brands fa-google"></i>Google Workspace</span>
+      <span class="tool-chip"><i class="fa-brands fa-slack"></i>Slack</span>
+      <span class="tool-chip"><i class="fa-solid fa-headset"></i>Zendesk</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMIC ENGINEERING PROJECTS -->
+<section class="section" id="academic">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Academic Foundation</span>
+      <h2>Where the engineering fundamentals come from.</h2>
+      <p>University projects from my Electrical Engineering degree — not professional or commercial work, but the technical foundation everything else is built on.</p>
+    </div>
+    <p class="compression-note"><i class="fa-solid fa-up-right-from-square"></i>Screenshots are compressed to fit the layout — click any image to open the full-resolution version in a new tab.</p>
+
+    <article class="academic-card">
+      <div class="flagship-top">
+        <div>
+          <span class="tag"><i class="fa-solid fa-graduation-cap"></i> University Project</span>
+          <h3>Residential Electrical Design — Lighting &amp; Power Layout</h3>
+          <p class="lead">A residential electrical design exercise covering lighting layout, power layout, and convenience outlet placement for a single-unit dwelling.</p>
+        </div>
+      </div>
+      <div class="story-grid">
+        <div><h4>Objective</h4><p>Design a code-compliant lighting and power layout for a residential unit.</p></div>
+        <div><h4>Scope</h4><p>Lighting layout, power layout, convenience outlet layout, and basic load estimation.</p></div>
+        <div><h4>Concepts applied</h4><p>Circuit design, load estimation, electrical symbols and legends, layout planning.</p></div>
+        <div><h4>Software</h4><p>AutoCAD for all drafting and layout work.</p></div>
+      </div>
+      <div class="shot-strip">
+        <div class="shot-wrap wide">
+          <div class="shot"><a href="assets/images/academic-lighting-layout.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/academic-lighting-layout.png" alt="Lighting layout AutoCAD drawing" onerror="this.style.display='none'"></a><i class="fa-solid fa-lightbulb"></i><b>Lighting layout</b><small>AutoCAD drawing</small></div>
+          <p class="shot-caption"><strong>Lighting layout</strong> — AutoCAD drawing</p>
+        </div>
+        <div class="shot-wrap">
+          <div class="shot"><a href="assets/images/academic-power-layout.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/academic-power-layout.png" alt="Power layout AutoCAD drawing" onerror="this.style.display='none'"></a><i class="fa-solid fa-plug"></i><b>Power layout</b><small>AutoCAD drawing</small></div>
+          <p class="shot-caption"><strong>Power layout</strong> — AutoCAD drawing</p>
+        </div>
+        <div class="shot-wrap">
+          <div class="shot"><a href="assets/images/academic-architectural-layout.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/academic-architectural-layout.png" alt="Architectural layout drawing" onerror="this.style.display='none'"></a><i class="fa-solid fa-outlet"></i><b>Architectural layout</b><small>AutoCAD drawing</small></div>
+          <p class="shot-caption"><strong>Architectural layout</strong> — AutoCAD drawing</p>
+        </div>
+      </div>
+      <div class="case-blocks">
+        <div><h4>Deliverables</h4><div class="pill-wrap"><span>Lighting layout drawing</span><span>Power layout drawing</span><span>Architectural layout drawing</span></div></div>
+        <div><h4>Skills demonstrated</h4><div class="pill-wrap"><span>Electrical design</span><span>AutoCAD drafting</span><span>Attention to detail</span></div></div>
+        <div><h4>Lessons learned</h4><p>Getting the layout legible for someone else to read mattered as much as getting the circuit right.</p></div>
+      </div>
+    </article>
+
+    <article class="academic-card">
+      <div class="flagship-top">
+        <div>
+          <span class="tag"><i class="fa-solid fa-graduation-cap"></i> University Project</span>
+          <h3>Single Line Diagram &amp; Panel Schedule</h3>
+          <p class="lead">Developed a single line diagram (SLD) and matching panel schedule for a small electrical distribution system.</p>
+        </div>
+      </div>
+      <div class="story-grid">
+        <div><h4>Objective</h4><p>Represent a distribution system's structure clearly, from source to individual circuits.</p></div>
+        <div><h4>Scope</h4><p>Single line diagram development and panel schedule preparation.</p></div>
+        <div><h4>Concepts applied</h4><p>Circuit breakers and protection, feeder and branch circuits, phase balancing basics.</p></div>
+        <div><h4>Software</h4><p>AutoCAD for the SLD; spreadsheet formatting for the panel schedule.</p></div>
+      </div>
+      <div class="shot-strip">
+        <div class="shot-wrap wide">
+          <div class="shot"><a href="assets/images/academic-sld.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/academic-sld.png" alt="Single line diagram drawing" onerror="this.style.display='none'"></a><i class="fa-solid fa-diagram-project"></i><b>Single line diagram</b><small>AutoCAD drawing</small></div>
+          <p class="shot-caption"><strong>Single line diagram</strong> — AutoCAD drawing</p>
+        </div>
+        <div class="shot-wrap wide">
+          <div class="shot"><a href="assets/images/academic-panel-schedule.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/academic-panel-schedule.png" alt="Panel schedule sheet" onerror="this.style.display='none'"></a><i class="fa-solid fa-table-list"></i><b>Panel schedule</b><small>Design sheet</small></div>
+          <p class="shot-caption"><strong>Panel schedule</strong> — Design sheet</p>
+        </div>
+      </div>
+      <div class="case-blocks">
+        <div><h4>Deliverables</h4><div class="pill-wrap"><span>Single line diagram</span><span>Panel schedule</span></div></div>
+        <div><h4>Skills demonstrated</h4><div class="pill-wrap"><span>SLD development</span><span>Panel schedule preparation</span><span>Technical documentation</span></div></div>
+        <div><h4>Lessons learned</h4><p>A panel schedule is only useful if it's formatted so someone unfamiliar with the project can follow it immediately.</p></div>
+      </div>
+    </article>
+
+    <article class="academic-card">
+      <div class="flagship-top">
+        <div>
+          <span class="tag"><i class="fa-solid fa-graduation-cap"></i> University Project</span>
+          <h3>Load Schedule &amp; Electrical Design Calculations</h3>
+          <p class="lead">Prepared a load schedule and supporting design calculations for an electrical system, as part of standard engineering documentation practice.</p>
+        </div>
+      </div>
+      <div class="story-grid">
+        <div><h4>Objective</h4><p>Quantify connected and demand load, and size conductors and protection accordingly.</p></div>
+        <div><h4>Scope</h4><p>Load schedule preparation and electrical design calculations.</p></div>
+        <div><h4>Concepts applied</h4><p>Load computation, demand factors, conductor and breaker sizing basics.</p></div>
+        <div><h4>Software</h4><p>Spreadsheet-based calculations, formatted as engineering documentation.</p></div>
+      </div>
+      <div class="shot-strip">
+        <div class="shot-wrap wide">
+          <div class="shot"><a href="assets/images/academic-load-schedule.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/academic-load-schedule.png" alt="Load schedule sheet" onerror="this.style.display='none'"></a><i class="fa-solid fa-calculator"></i><b>Load schedule</b><small>Calculation sheet</small></div>
+          <p class="shot-caption"><strong>Load schedule</strong> — Calculation sheet</p>
+        </div>
+        <div class="shot-wrap wide">
+          <div class="carousel" id="calcCarousel">
+            <div class="carousel-track" id="calcTrack">
+              <div class="carousel-slide">
+                <a href="assets/images/academic-calculations-1.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/academic-calculations-1.png" alt="Electrical design calculations sheet, page 1" onerror="this.style.display='none'"></a>
+                <i class="fa-solid fa-square-root-variable"></i><b>Design calculations</b><small>Page 1 of 3</small>
+              </div>
+              <div class="carousel-slide">
+                <a href="assets/images/academic-calculations-2.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/academic-calculations-2.png" alt="Electrical design calculations sheet, page 2" onerror="this.style.display='none'"></a>
+                <i class="fa-solid fa-square-root-variable"></i><b>Design calculations</b><small>Page 2 of 3</small>
+              </div>
+              <div class="carousel-slide">
+                <a href="assets/images/academic-calculations-3.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/academic-calculations-3.png" alt="Electrical design calculations sheet, page 3" onerror="this.style.display='none'"></a>
+                <i class="fa-solid fa-square-root-variable"></i><b>Design calculations</b><small>Page 3 of 3</small>
+              </div>
+            </div>
+            <span class="carousel-page-tag" id="calcPageTag">1 / 3</span>
+            <button class="carousel-arrow prev" onclick="carouselMove('calc',-1)" aria-label="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="carousel-arrow next" onclick="carouselMove('calc',1)" aria-label="Next page"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="carousel-dots" id="calcDots">
+              <button class="active" onclick="carouselGo('calc',0)"></button>
+              <button onclick="carouselGo('calc',1)"></button>
+              <button onclick="carouselGo('calc',2)"></button>
+            </div>
+          </div>
+          <p class="shot-caption"><strong>Design calculations</strong> — Calculation sheet (3 pages)</p>
+        </div>
+      </div>
+      <div class="case-blocks">
+        <div><h4>Deliverables</h4><div class="pill-wrap"><span>Load schedule</span><span>Design calculation sheet</span></div></div>
+        <div><h4>Skills demonstrated</h4><div class="pill-wrap"><span>Load computation</span><span>Engineering problem solving</span><span>Documentation</span></div></div>
+        <div><h4>Lessons learned</h4><p>Calculations only hold up if the assumptions behind them are written down as clearly as the numbers.</p></div>
+      </div>
+    </article>
+
+    <p class="academic-note">These academic projects are the engineering foundation underneath everything I build today — the same instinct for structure, documentation, and getting the numbers right now shows up in the Excel systems, Power BI dashboards, and construction-technology work above.</p>
+  </div>
+</section>
+<section class="section" id="certifications">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Certifications</span>
+      <h2>Credentials that back the engineering claim.</h2>
+    </div>
+    <div class="cert-strip">
+      <div class="cert-badge">
+        <i class="fa-solid fa-certificate"></i>
+        <div><b>Licensed Electrical Engineer</b><span>Professional Regulation Commission, Philippines</span></div>
+      </div>
+      <div class="cert-badge">
+        <i class="fa-solid fa-award"></i>
+        <div><b>Civil Service Professional Eligibility</b><span>Philippines</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LICENSES & PROFESSIONAL DEVELOPMENT -->
+<section class="section tint" id="licenses">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Licenses &amp; Professional Development</span>
+      <h2>Credentials, training, and what I'm working on right now.</h2>
+      <p>This section is meant to grow — as I attend more seminars and pick up more tools, they get added here.</p>
+    </div>
+
+    <div class="license-block">
+      <span class="subhead">Professional Licenses</span>
+      <div class="cert-strip">
+        <div class="cert-badge">
+          <i class="fa-solid fa-certificate"></i>
+          <div><b>Licensed Electrical Engineer</b><span>Professional Regulation Commission, Philippines</span></div>
+        </div>
+        <div class="cert-badge">
+          <i class="fa-solid fa-award"></i>
+          <div><b>Civil Service Professional Eligibility</b><span>Philippines</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="license-block">
+      <span class="subhead">Engineering Seminars &amp; Technical Training</span>
+      <p class="compression-note" style="margin-top:0;"><i class="fa-solid fa-up-right-from-square"></i>Certificate images are compressed to fit the layout — click any image to open the full-resolution version in a new tab.</p>
+      <div class="mini-grid">
+        <article class="mini-case">
+          <div class="mini-shot"><a href="assets/images/cert-placeholder-1.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/cert-placeholder-1.png" alt="Certificate placeholder" onerror="this.style.display='none'"></a><i class="fa-solid fa-certificate"></i><small>Certificate placeholder</small></div>
+          <h3>Seminar / Grounding and Bonding</h3>
+          <p class="mono" style="font-size:.8rem;color:var(--ink-faint);">IIEE Metro East · 2022</p>
+          <p>Attended an IIEE technical seminar covering grounding and bonding principles for low-voltage electrical systems, including equipment grounding, personnel safety, fault current paths, and compliance with electrical standards.</p>
+          <div class="pill-wrap"><span>Grounding System Design</span><span>Electrical Safety</span></div>
+        </article>
+        <article class="mini-case">
+          <div class="mini-shot"><a href="assets/images/cert-placeholder-2.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/cert-placeholder-2.png" alt="Certificate placeholder" onerror="this.style.display='none'"></a><i class="fa-solid fa-certificate"></i><small>Certificate placeholder</small></div>
+          <h3>Seminar / Fire Detection and Alarm System</h3>
+          <p class="mono" style="font-size:.8rem;color:var(--ink-faint);">IIEE Metro East · 2022</p>
+          <p>Participated in an IIEE seminar introducing the design, operation, and components of Fire Detection and Alarm Systems, including detectors, notification appliances, control panels, and basic code requirements for building safety.</p>
+          <div class="pill-wrap"><span>FDAS Fundamentals</span><span>Building Electrical Systems</span></div>
+        </article>
+        <article class="mini-case">
+          <div class="mini-shot"><a href="assets/images/cert-placeholder-3.png" target="_blank" rel="noopener" class="shot-link"><img src="assets/images/cert-placeholder-3.png" alt="Certificate placeholder" onerror="this.style.display='none'"></a><i class="fa-solid fa-certificate"></i><small>Certificate placeholder</small></div>
+          <h3>Seminar / Basic Solar Design for Residential & Commercial Building</h3>
+          <p class="mono" style="font-size:.8rem;color:var(--ink-faint);">IIEE Metro East · 2022</p>
+          <p>Attended an IIEE seminar on photovoltaic (PV) system fundamentals, covering system components, basic sizing, site considerations, and introductory design concepts for residential and commercial solar installations.</p>
+          <div class="pill-wrap"><span>Solar PV Fundamentals</span><span>Residential Solar Design</span></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="license-block">
+      <span class="subhead">Current Learning Journey</span>
+      <div class="learn-grid">
+        <div class="learn-card">
+          <div class="learn-top"><i class="fa-solid fa-drafting-compass"></i><span class="status shipped">Comfortable</span></div>
+          <h4>AutoCAD</h4>
+          <div class="learn-bar level-3"><span></span></div>
+        </div>
+        <div class="learn-card">
+          <div class="learn-top"><i class="fa-solid fa-pen-ruler"></i><span class="status learning">Exploring</span></div>
+          <h4>Bluebeam Revu</h4>
+          <div class="learn-bar level-1"><span></span></div>
+        </div>
+        <div class="learn-card">
+          <div class="learn-top"><i class="fa-solid fa-chart-pie"></i><span class="status shipped">Practicing regularly</span></div>
+          <h4>Power BI</h4>
+          <div class="learn-bar level-3"><span></span></div>
+        </div>
+        <div class="learn-card">
+          <div class="learn-top"><i class="fa-solid fa-arrows-turn-to-dots"></i><span class="status progress">Practicing regularly</span></div>
+          <h4>Power Query</h4>
+          <div class="learn-bar level-2"><span></span></div>
+        </div>
+        <div class="learn-card">
+          <div class="learn-top"><i class="fa-solid fa-file-code"></i><span class="status shipped">Comfortable</span></div>
+          <h4>Excel VBA</h4>
+          <div class="learn-bar level-3"><span></span></div>
+        </div>
+        <div class="learn-card">
+          <div class="learn-top"><i class="fa-solid fa-helmet-safety"></i><span class="status learning">Exploring</span></div>
+          <h4>Construction Technology</h4>
+          <div class="learn-bar level-1"><span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section tint" id="about">
+  <div class="container about-grid">
+    <div class="about-media">
+      <div class="about-photo">
+        <img class="photo" src="assets/images/profile-photo.jpg" alt="" onerror="this.style.display='none'">
+        <i class="fa-regular fa-user"></i>
+        <span>Photo — replace with your own</span>
+      </div>
+      <div class="intro-video" id="introVideo" onclick="playIntro()">
+        <img class="poster" src="assets/images/intro-poster.jpg" alt="" onerror="this.style.display='none'">
+        <i class="fa-solid fa-video"></i>
+        <span class="cap">Video</span>
+        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        <span class="play-cap">Introducing me</span>
+        <video id="introPlayer" playsinline controls>
+          <source src="assets/video/intro.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">About</span>
+      <h2 class="lede">I'm an electrical engineer who ended up loving the operations side of getting things done.</h2>
+      <p>I studied Electrical Engineering, sat the licensure exam, and became a Licensed Electrical Engineer in the Philippines. Since then, my day-to-day work hasn't been on a jobsite — it's been in customer support, data entry, and now international operations at Cambridge University Press &amp; Assessment.</p>
+      <p>Somewhere in that work, I noticed what I actually enjoy: taking scattered information and giving it structure. Building the register that replaces five spreadsheets. Automating the email that used to take an hour. Turning a pile of numbers into a dashboard someone can actually use to decide something.</p>
+      <p>That's why I built CPIS on my own time, and why I'm working through Bluebeam and construction workflows deliberately rather than claiming experience I don't have. I'm not positioning myself as a ten-year construction veteran. I'm positioning myself as an engineer who builds systems — and who's ready to bring that to engineering operations, construction technology, project controls, or digital engineering teams.</p>
+      <p>If that combination is useful to your team, I'd like to talk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-panel">
+      <div>
+        <span class="eyebrow" style="color:var(--circuit);">Contact</span>
+        <h2>Building an engineering ops or construction-tech team?</h2>
+        <p>I'm looking for roles in engineering operations, construction technology, project controls, procurement engineering, estimating support, construction administration, or digital engineering — and I'm happy to talk about how I'd fit.</p>
+        <div class="contact-list" style="margin-top:26px;">
+          <a href="mailto:mlb.alfafara@gmail.com"><i class="fa-solid fa-envelope"></i> mlb.alfafara@gmail.com</a>
+          <a href="https://www.linkedin.com/in/ma-lyka-alfafara/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="#"><i class="fa-brands fa-github"></i> GitHub (optional)</a>
+          <span><i class="fa-solid fa-location-dot"></i> Philippines · open to remote</span>
+        </div>
+      </div>
+      <form onsubmit="return submitContact(event)">
+        <div>
+          <label>Name</label>
+          <input required placeholder="Your name">
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" required placeholder="mlb.alfafara@gmail.com">
+        </div>
+        <div>
+          <label>Company / role you're hiring for</label>
+          <input placeholder="e.g. Project Controls Analyst, Digital Engineering">
+        </div>
+        <div>
+          <label>Message</label>
+          <textarea rows="4" required placeholder="Tell me a bit about the role or project."></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Send message</button>
+        <p id="formStatus"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>© <span id="year"></span>Engr. Ma. Lyka B. Alfafara— Licensed Electrical Engineer building systems for engineering &amp; construction operations.</p>
+    <div class="footer-socials">
+      <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="#"><i class="fa-brands fa-github"></i></a>
+      <a href="mailto:lyka.alfafara@example.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+function playIntro(){
+  const wrap = document.getElementById('introVideo');
+  const vid = document.getElementById('introPlayer');
+  if(wrap.classList.contains('playing')) return;
+  wrap.classList.add('playing');
+  vid.play().catch(()=>{});
+}
+
+const carouselState = {};
+function carouselUpdate(id){
+  const idx = carouselState[id] || 0;
+  const track = document.getElementById(id + 'Track');
+  const dots = document.getElementById(id + 'Dots').children;
+  const tag = document.getElementById(id + 'PageTag');
+  track.style.transform = `translateX(-${idx * 100}%)`;
+  Array.from(dots).forEach((d,i) => d.classList.toggle('active', i === idx));
+  tag.textContent = `${idx + 1} / ${dots.length}`;
+}
+function carouselMove(id, dir){
+  const dots = document.getElementById(id + 'Dots').children.length;
+  carouselState[id] = ((carouselState[id] || 0) + dir + dots) % dots;
+  carouselUpdate(id);
+}
+function carouselGo(id, index){
+  carouselState[id] = index;
+  carouselUpdate(id);
+}
+
+function submitContact(e){
+  e.preventDefault();
+  document.getElementById('formStatus').textContent = "This form is a placeholder — connect it to your email service or a form backend (e.g. Formspree) to receive messages.";
+  return false;
+}
+</script>
+</body>
+</html>
